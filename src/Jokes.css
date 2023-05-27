@@ -1,0 +1,39 @@
+body {
+    background-color: #b3e5fc;
+    border-radius: 10px;
+    font-family: "Raleway", sans-serif;
+}
+
+.textLeft {
+    text-align: left;
+}
+
+.card {
+    width: 450px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: auto;
+}
+
+
+.body {
+    background: #eee;
+}
+
+.input input {
+    padding: 10px;
+    border: none;
+    width: 31%;
+    margin-left: 34%;
+    margin-bottom: 2%;
+}
+
+.image img {
+    width: 150px;
+    border: 2px solid #000;
+    margin-left: 27%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
