@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 
 //librray import
 import { useLocation } from 'react-router-dom';
@@ -9,13 +9,14 @@ import { TIME1, TIME2, TIME3, TIME4, TIME6, TIME7, TIME8, TIME9, TIME10, TIME11,
 
 const ViewTask = () => {
     const location = useLocation();
-
-    //getting state
     const data = location.state?.newArray;
-    console.log(data);
+    const [individualData, setIndividualData] = useState([data])
+    useEffect(() => {
+    }, [location])
 
-
-
+    const handleDelete = () => {
+        setIndividualData([])
+    }
     return (
         <>
             <section className="landing-section">
@@ -32,6 +33,7 @@ const ViewTask = () => {
                                     <th scope="col">Description</th>
                                     <th scope="col">Start Time</th>
                                     <th scope="col">End Time</th>
+                                    <th scope="col">Delete</th>
 
                                 </tr>
                             </thead>
@@ -100,11 +102,16 @@ const ViewTask = () => {
                                                         text
                                                     }
                                                 </button></td>
-                                                <td><button style={{ background: backgroundColor2 }} className='statusBtn'>
+                                                <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
                                                     {
-                                                        text2
+                                                        text2 ? text2 : 'Expired'
                                                     }
                                                 </button></td>
+                                                <td>
+                                                    <button style={{ background: '#000' }} className='statusBtn' onClick={handleDelete}>
+                                                        Delete
+                                                    </button>
+                                                </td>
                                             </tr>
                                         )
                                     })
