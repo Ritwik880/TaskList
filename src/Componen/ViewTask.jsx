@@ -95,12 +95,12 @@ const ViewTask = () => {
                                                     {item.taskName}
                                                 </td>
                                                 <td> {item.description}</td>
-                                                <td><button style={{ background: backgroundColor }}>
+                                                <td><button style={{ background: backgroundColor }} className='statusBtn'>
                                                     {
                                                         text
                                                     }
                                                 </button></td>
-                                                <td><button style={{ background: backgroundColor2 }}>
+                                                <td><button style={{ background: backgroundColor2 }} className='statusBtn'>
                                                     {
                                                         text2
                                                     }

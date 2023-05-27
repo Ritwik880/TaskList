@@ -70,6 +70,12 @@
 .table{
   border: 2px solid #000;
 }
+.statusBtn{
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.4rem;
+}
 @media (max-width: 767px) {
   .landing-form {
       width: 100%;
