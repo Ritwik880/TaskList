@@ -7,11 +7,11 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 //component import
-import Login from './Componen/Login';
-import EditTask from './Componen/EditTask';
-import ViewTask from './Componen/ViewTask';
-import JokesSpot from './Componen/JokesSpot';
-import PrivateRoute from './Componen/PrivateRoute';
+import Login from './Component/Login';
+import EditTask from './Component/EditTask';
+import ViewTask from './Component/ViewTask';
+import JokesSpot from './Component/JokesSpot';
+import PrivateRoute from './Component/PrivateRoute';
 
 
 const App = () => {

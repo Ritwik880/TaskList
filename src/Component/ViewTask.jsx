@@ -134,9 +134,9 @@ const ViewTask = () => {
                                                             {item.taskName}
                                                         </td>
                                                         <td> {item.description}</td>
-                                                        <td><button style={{ background: backgroundColor }} className='statusBtn'>
+                                                        <td><button style={{ background: backgroundColor ? backgroundColor : '#27ae60' }} className='statusBtn'>
                                                             {
-                                                                text
+                                                                text ? text : 'Scheduled'
                                                             }
                                                         </button></td>
                                                         <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
@@ -216,9 +216,9 @@ const ViewTask = () => {
                                                             {item.taskName}
                                                         </td>
                                                         <td> {item.description}</td>
-                                                        <td><button style={{ background: backgroundColor }} className='statusBtn'>
+                                                        <td><button style={{ background: backgroundColor ? backgroundColor : '#27ae60' }} className='statusBtn'>
                                                             {
-                                                                text
+                                                                text ? text : 'Scheduled'
                                                             }
                                                         </button></td>
                                                         <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
