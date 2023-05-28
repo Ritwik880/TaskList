@@ -1,7 +1,7 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //librray import
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 //constant imports
 import { TIME1, TIME2, TIME3, TIME4, TIME6, TIME7, TIME8, TIME9, TIME10, TIME11, TIME12, TIME13, TIME14, TIME15, TIME16, TIME17, TIME18, TIME19, TIME20, TIME21, TIME22, TIME23, TIME24 } from '../constants/status';
@@ -10,12 +10,21 @@ import { TIME1, TIME2, TIME3, TIME4, TIME6, TIME7, TIME8, TIME9, TIME10, TIME11,
 const ViewTask = () => {
     const location = useLocation();
     const data = location.state?.newArray;
-    const [individualData, setIndividualData] = useState([data])
+    const [incommingData, setIncommingData] = useState(data)
     useEffect(() => {
     }, [location])
 
-    const handleDelete = () => {
-        setIndividualData([])
+    const handleDelete = (id) => {
+        console.log(id);
+        const updataList = incommingData.filter(
+            (user, index) => index.length !== id
+        );
+        setIncommingData(updataList)
+    }
+
+    const navigate = useNavigate();
+    const hanldeViewJokes = () => {
+        navigate('/jokesSpot')
     }
     return (
         <>
@@ -39,7 +48,9 @@ const ViewTask = () => {
                             </thead>
                             <tbody>
                                 {
-                                    data && data.map((item, id) => {
+                                    incommingData && incommingData.map((item, id) => {
+
+                                        let indexNo = incommingData.length;
 
                                         let backgroundColor;
                                         let text;
@@ -90,7 +101,7 @@ const ViewTask = () => {
                                             <tr key={id}>
                                                 <th scope="row">
                                                     {
-                                                        id
+                                                        indexNo
                                                     }
                                                 </th>
                                                 <td>
@@ -108,7 +119,7 @@ const ViewTask = () => {
                                                     }
                                                 </button></td>
                                                 <td>
-                                                    <button style={{ background: '#000' }} className='statusBtn' onClick={handleDelete}>
+                                                    <button style={{ background: '#000' }} className='statusBtn' onClick={(indexNo) => handleDelete(indexNo)}>
                                                         Delete
                                                     </button>
                                                 </td>
@@ -119,6 +130,9 @@ const ViewTask = () => {
 
                             </tbody>
                         </table>
+                        <div className='viewJokesDiv'>
+                            <button className='viewJokesBtn' onClick={hanldeViewJokes}>View All Jokes</button>
+                        </div>
                     </div>
                 </div>
             </section>
