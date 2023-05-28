@@ -45,9 +45,17 @@ const EditTask = () => {
                                     aria-describedby="emailHelp" placeholder="Task Name" value={taskName} onChange={(e) => setTaskName(e.target.value)} required />
                                 <input type="text" className="form-control form-input" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
-                                <div className='mt-2'>
-                                    <TimePicker onChange={setStartTime} value={startTime} amPmAriaLabel={'AM'} disableClock={true} clockClassName='start-time' />
-                                    <TimePicker onChange={setEndTime} value={startTime} amPmAriaLabel={'PM'} disableClock={true} clockClassName='start-time' />
+                                <div className='mt-2 timeDiv'>
+                                    <div>
+                                        <p>Start Time</p>
+                                        <TimePicker onChange={setStartTime} value={startTime} amPmAriaLabel="Select AM/PM" disableClock={true} clockClassName='start-time' />
+
+                                    </div>
+                                    <div>
+                                        <p>End Time</p>
+                                        <TimePicker onChange={setEndTime} value={endTime} amPmAriaLabel="Select AM/PM" disableClock={true} clockClassName='start-time' />
+
+                                    </div>
                                 </div>
                                 <button className="form-reset-btn" type='submit'>Create</button>
                             </div>
