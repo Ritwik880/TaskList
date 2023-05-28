@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 //constant imports
-import { TIME1, TIME2, TIME3, TIME4, TIME6, TIME7, TIME8, TIME9, TIME10, TIME11, TIME12, TIME13, TIME14, TIME15, TIME16, TIME17, TIME18, TIME19, TIME20, TIME21, TIME22, TIME23, TIME24 } from '../constants/status';
+import { TIME1, TIME2, TIME3 } from '../constants/status';
 
 
 const ViewTask = () => {

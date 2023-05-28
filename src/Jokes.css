@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
 body {
     background-color: #b3e5fc;
     border-radius: 10px;
@@ -39,15 +40,17 @@ body {
     justify-content: center;
     align-items: center; */
 }
+
 @media (max-width: 767px) {
-    .input{
+    .input {
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     .input input {
         width: 100%;
         margin-bottom: 2%;
         margin-left: 0;
     }
-  }
+}
