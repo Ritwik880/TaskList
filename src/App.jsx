@@ -12,12 +12,15 @@ import EditTask from './Component/EditTask';
 import ViewTask from './Component/ViewTask';
 import JokesSpot from './Component/JokesSpot';
 import PrivateRoute from './Component/PrivateRoute';
+import Navbar from './Component/Navbar';
+import Footer from './Component/Footer';
 
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false)
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login signIn={setIsSignedIn} />} />
@@ -46,6 +49,7 @@ const App = () => {
           }
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
