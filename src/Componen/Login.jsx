@@ -11,6 +11,7 @@ const Login = () => {
     const [newEntry, setNewEntry] = useState([]);
     const navigate = useNavigate();
 
+    //logic for submitting data
     const handleSubmit = (e) => {
         e.preventDefault();
         const newArray = [{

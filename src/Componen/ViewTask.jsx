@@ -26,9 +26,9 @@ const ViewTask = () => {
         setIncommingData(updataList)
     }
     useEffect(() => {
-      
+
     }, [handleDelete])
-    
+
 
     //logic for navigating to next r
     const navigate = useNavigate();
@@ -57,191 +57,194 @@ const ViewTask = () => {
                         <div className="input">
                             <input type="text" placeholder="Search.." onChange={(e) => searchItems(e.target.value)} />
                         </div>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">S.No.</th>
-                                    <th scope="col">Task Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Start Time</th>
-                                    <th scope="col">End Time</th>
-                                    <th scope="col">Delete</th>
+                        <div className='table-responsive'>
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">S.No.</th>
+                                        <th scope="col">Task Name</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Start Time</th>
+                                        <th scope="col">End Time</th>
+                                        <th scope="col">Delete</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    input.length > 1 ? (
-                                        filteredResults && filteredResults.map((item, id) => {
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        input.length > 1 ? (
+                                            filteredResults && filteredResults.map((item, id) => {
 
-                                            let indexNo = incommingData.length;
-                                            let name2 = item.taskName;
+                                                let indexNo = incommingData.length;
+                                                let name2 = item.taskName;
 
-                                            let backgroundColor;
-                                            let text;
+                                                let backgroundColor;
+                                                let text;
 
-                                            let backgroundColor2;
-                                            let text2;
+                                                let backgroundColor2;
+                                                let text2;
 
-                                            let status = item.startTime;
-                                            switch (status) {
-                                                case TIME1: {
-                                                    backgroundColor = '#27ae60';
-                                                    text = 'Scheduled';
-                                                    break;
-                                                }
-                                                case TIME2: {
-                                                    backgroundColor = '#f1c40f';
-                                                    text = 'Running';
-                                                    break;
-                                                }
-                                                case TIME3: {
-                                                    backgroundColor = '#e74c3c';
-                                                    text = 'Expired';
-                                                    break;
-                                                }
+                                                let status = item.startTime;
+                                                switch (status) {
+                                                    case TIME1: {
+                                                        backgroundColor = '#27ae60';
+                                                        text = 'Scheduled';
+                                                        break;
+                                                    }
+                                                    case TIME2: {
+                                                        backgroundColor = '#f1c40f';
+                                                        text = 'Running';
+                                                        break;
+                                                    }
+                                                    case TIME3: {
+                                                        backgroundColor = '#e74c3c';
+                                                        text = 'Expired';
+                                                        break;
+                                                    }
 
-                                            }
-
-                                            let status2 = item.endTime;
-                                            switch (status2) {
-                                                case TIME1: {
-                                                    backgroundColor2 = '#27ae60';
-                                                    text2 = 'Scheduled';
-                                                    break;
-                                                }
-                                                case TIME2: {
-                                                    backgroundColor2 = '#f1c40f';
-                                                    text2 = 'Running';
-                                                    break;
-                                                }
-                                                case TIME3: {
-                                                    backgroundColor2 = '#e74c3c';
-                                                    text2 = 'Expired';
-                                                    break;
                                                 }
 
-                                            }
-                                            return (
-                                                <tr key={id}>
-                                                    <th scope="row">
-                                                        {
-                                                            indexNo
-                                                        }
-                                                    </th>
-                                                    <td>
-                                                        {item.taskName}
-                                                    </td>
-                                                    <td> {item.description}</td>
-                                                    <td><button style={{ background: backgroundColor }} className='statusBtn'>
-                                                        {
-                                                            text
-                                                        }
-                                                    </button></td>
-                                                    <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
-                                                        {
-                                                            text2 ? text2 : 'Expired'
-                                                        }
-                                                    </button></td>
-                                                    <td>
-                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={() => handleDelete(name2)}>
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    ) : (
+                                                let status2 = item.endTime;
+                                                switch (status2) {
+                                                    case TIME1: {
+                                                        backgroundColor2 = '#27ae60';
+                                                        text2 = 'Scheduled';
+                                                        break;
+                                                    }
+                                                    case TIME2: {
+                                                        backgroundColor2 = '#f1c40f';
+                                                        text2 = 'Running';
+                                                        break;
+                                                    }
+                                                    case TIME3: {
+                                                        backgroundColor2 = '#e74c3c';
+                                                        text2 = 'Expired';
+                                                        break;
+                                                    }
 
-                                        incommingData && incommingData.map((item, id) => {
-
-                                            let indexNo = incommingData.length;
-
-                                            let name = item.taskName;
-
-                                            let backgroundColor;
-                                            let text;
-
-                                            let backgroundColor2;
-                                            let text2;
-
-                                            let status = item.startTime;
-                                            switch (status) {
-                                                case TIME1: {
-                                                    backgroundColor = '#27ae60';
-                                                    text = 'Scheduled';
-                                                    break;
                                                 }
-                                                case TIME2: {
-                                                    backgroundColor = '#f1c40f';
-                                                    text = 'Running';
-                                                    break;
+                                                return (
+                                                    <tr key={id}>
+                                                        <th scope="row">
+                                                            {
+                                                                indexNo
+                                                            }
+                                                        </th>
+                                                        <td>
+                                                            {item.taskName}
+                                                        </td>
+                                                        <td> {item.description}</td>
+                                                        <td><button style={{ background: backgroundColor }} className='statusBtn'>
+                                                            {
+                                                                text
+                                                            }
+                                                        </button></td>
+                                                        <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
+                                                            {
+                                                                text2 ? text2 : 'Expired'
+                                                            }
+                                                        </button></td>
+                                                        <td>
+                                                            <button style={{ background: '#000' }} className='statusBtn' onClick={() => handleDelete(name2)}>
+                                                                Delete
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })
+                                        ) : (
+
+                                            incommingData && incommingData.map((item, id) => {
+
+                                                let indexNo = incommingData.length;
+
+                                                let name = item.taskName;
+
+                                                let backgroundColor;
+                                                let text;
+
+                                                let backgroundColor2;
+                                                let text2;
+
+                                                let status = item.startTime;
+                                                switch (status) {
+                                                    case TIME1: {
+                                                        backgroundColor = '#27ae60';
+                                                        text = 'Scheduled';
+                                                        break;
+                                                    }
+                                                    case TIME2: {
+                                                        backgroundColor = '#f1c40f';
+                                                        text = 'Running';
+                                                        break;
+                                                    }
+                                                    case TIME3: {
+                                                        backgroundColor = '#e74c3c';
+                                                        text = 'Expired';
+                                                        break;
+                                                    }
+
                                                 }
-                                                case TIME3: {
-                                                    backgroundColor = '#e74c3c';
-                                                    text = 'Expired';
-                                                    break;
+
+                                                let status2 = item.endTime;
+                                                switch (status2) {
+                                                    case TIME1: {
+                                                        backgroundColor2 = '#27ae60';
+                                                        text2 = 'Scheduled';
+                                                        break;
+                                                    }
+                                                    case TIME2: {
+                                                        backgroundColor2 = '#f1c40f';
+                                                        text2 = 'Running';
+                                                        break;
+                                                    }
+                                                    case TIME3: {
+                                                        backgroundColor2 = '#e74c3c';
+                                                        text2 = 'Expired';
+                                                        break;
+                                                    }
+
                                                 }
+                                                return (
+                                                    <tr key={id}>
+                                                        <th scope="row">
+                                                            {
+                                                                indexNo
+                                                            }
+                                                        </th>
+                                                        <td>
+                                                            {item.taskName}
+                                                        </td>
+                                                        <td> {item.description}</td>
+                                                        <td><button style={{ background: backgroundColor }} className='statusBtn'>
+                                                            {
+                                                                text
+                                                            }
+                                                        </button></td>
+                                                        <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
+                                                            {
+                                                                text2 ? text2 : 'Expired'
+                                                            }
+                                                        </button></td>
+                                                        <td>
+                                                            <button style={{ background: '#000' }} className='statusBtn' onClick={() => handleDelete(name)}>
+                                                                Delete
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })
 
-                                            }
-
-                                            let status2 = item.endTime;
-                                            switch (status2) {
-                                                case TIME1: {
-                                                    backgroundColor2 = '#27ae60';
-                                                    text2 = 'Scheduled';
-                                                    break;
-                                                }
-                                                case TIME2: {
-                                                    backgroundColor2 = '#f1c40f';
-                                                    text2 = 'Running';
-                                                    break;
-                                                }
-                                                case TIME3: {
-                                                    backgroundColor2 = '#e74c3c';
-                                                    text2 = 'Expired';
-                                                    break;
-                                                }
-
-                                            }
-                                            return (
-                                                <tr key={id}>
-                                                    <th scope="row">
-                                                        {
-                                                            indexNo
-                                                        }
-                                                    </th>
-                                                    <td>
-                                                        {item.taskName}
-                                                    </td>
-                                                    <td> {item.description}</td>
-                                                    <td><button style={{ background: backgroundColor }} className='statusBtn'>
-                                                        {
-                                                            text
-                                                        }
-                                                    </button></td>
-                                                    <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
-                                                        {
-                                                            text2 ? text2 : 'Expired'
-                                                        }
-                                                    </button></td>
-                                                    <td>
-                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={() => handleDelete(name)}>
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-
-                                    )
-                                }
+                                        )
+                                    }
 
 
 
-                            </tbody>
-                        </table>
-                       
+                                </tbody>
+                            </table>
+                        </div>
+
+
                         <div className='viewJokesDiv'>
                             <button className='viewJokesBtn' onClick={hanldeViewJokes}>View All Jokes</button>
                         </div>

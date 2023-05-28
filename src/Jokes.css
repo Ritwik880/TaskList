@@ -38,3 +38,15 @@ body {
     justify-content: center;
     align-items: center; */
 }
+@media (max-width: 767px) {
+    .input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .input input {
+        width: 100%;
+        margin-bottom: 2%;
+        margin-left: 0;
+    }
+  }
