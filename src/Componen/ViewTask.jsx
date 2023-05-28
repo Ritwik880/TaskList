@@ -8,12 +8,16 @@ import { TIME1, TIME2, TIME3, TIME4, TIME6, TIME7, TIME8, TIME9, TIME10, TIME11,
 
 
 const ViewTask = () => {
+    const [input, setInput] = useState('');
     const location = useLocation();
     const data = location.state?.newArray;
-    const [incommingData, setIncommingData] = useState(data)
+    const [incommingData, setIncommingData] = useState(data);
+    const [filteredResults, setFilteredResults] = useState([]);
     useEffect(() => {
     }, [location])
 
+
+    //logic for deleting individual task!
     const handleDelete = (id) => {
         console.log(id);
         const updataList = incommingData.filter(
@@ -22,9 +26,24 @@ const ViewTask = () => {
         setIncommingData(updataList)
     }
 
+    //logic for navigating to next r
     const navigate = useNavigate();
     const hanldeViewJokes = () => {
         navigate('/jokesSpot')
+    }
+
+    //logic for searching the individual task!
+    const searchItems = (searchValue) => {
+        setInput(searchValue)
+        if (input !== '') {
+            const filteredData = data.filter((item) => {
+                return Object.values(item).join('').toLowerCase().includes(input.toLowerCase())
+            })
+            setFilteredResults(filteredData)
+        }
+        else {
+            setFilteredResults(data)
+        }
     }
     return (
         <>
@@ -48,84 +67,167 @@ const ViewTask = () => {
                             </thead>
                             <tbody>
                                 {
-                                    incommingData && incommingData.map((item, id) => {
+                                    input.length > 1 ? (
+                                        filteredResults && filteredResults.map((item, id) => {
 
-                                        let indexNo = incommingData.length;
+                                            let indexNo = incommingData.length;
 
-                                        let backgroundColor;
-                                        let text;
+                                            let backgroundColor;
+                                            let text;
 
-                                        let backgroundColor2;
-                                        let text2;
+                                            let backgroundColor2;
+                                            let text2;
 
-                                        let status = item.startTime;
-                                        switch (status) {
-                                            case TIME1: {
-                                                backgroundColor = '#27ae60';
-                                                text = 'Scheduled';
-                                                break;
-                                            }
-                                            case TIME2: {
-                                                backgroundColor = '#f1c40f';
-                                                text = 'Running';
-                                                break;
-                                            }
-                                            case TIME3: {
-                                                backgroundColor = '#e74c3c';
-                                                text = 'Expired';
-                                                break;
-                                            }
+                                            let status = item.startTime;
+                                            switch (status) {
+                                                case TIME1: {
+                                                    backgroundColor = '#27ae60';
+                                                    text = 'Scheduled';
+                                                    break;
+                                                }
+                                                case TIME2: {
+                                                    backgroundColor = '#f1c40f';
+                                                    text = 'Running';
+                                                    break;
+                                                }
+                                                case TIME3: {
+                                                    backgroundColor = '#e74c3c';
+                                                    text = 'Expired';
+                                                    break;
+                                                }
 
-                                        }
-
-                                        let status2 = item.endTime;
-                                        switch (status2) {
-                                            case TIME1: {
-                                                backgroundColor2 = '#27ae60';
-                                                text2 = 'Scheduled';
-                                                break;
-                                            }
-                                            case TIME2: {
-                                                backgroundColor2 = '#f1c40f';
-                                                text2 = 'Running';
-                                                break;
-                                            }
-                                            case TIME3: {
-                                                backgroundColor2 = '#e74c3c';
-                                                text2 = 'Expired';
-                                                break;
                                             }
 
-                                        }
-                                        return (
-                                            <tr key={id}>
-                                                <th scope="row">
-                                                    {
-                                                        indexNo
-                                                    }
-                                                </th>
-                                                <td>
-                                                    {item.taskName}
-                                                </td>
-                                                <td> {item.description}</td>
-                                                <td><button style={{ background: backgroundColor }} className='statusBtn'>
-                                                    {
-                                                        text
-                                                    }
-                                                </button></td>
-                                                <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
-                                                    {
-                                                        text2 ? text2 : 'Expired'
-                                                    }
-                                                </button></td>
-                                                <td>
-                                                    <button style={{ background: '#000' }} className='statusBtn' onClick={(indexNo) => handleDelete(indexNo)}>
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
+                                            let status2 = item.endTime;
+                                            switch (status2) {
+                                                case TIME1: {
+                                                    backgroundColor2 = '#27ae60';
+                                                    text2 = 'Scheduled';
+                                                    break;
+                                                }
+                                                case TIME2: {
+                                                    backgroundColor2 = '#f1c40f';
+                                                    text2 = 'Running';
+                                                    break;
+                                                }
+                                                case TIME3: {
+                                                    backgroundColor2 = '#e74c3c';
+                                                    text2 = 'Expired';
+                                                    break;
+                                                }
+
+                                            }
+                                            return (
+                                                <tr key={id}>
+                                                    <th scope="row">
+                                                        {
+                                                            indexNo
+                                                        }
+                                                    </th>
+                                                    <td>
+                                                        {item.taskName}
+                                                    </td>
+                                                    <td> {item.description}</td>
+                                                    <td><button style={{ background: backgroundColor }} className='statusBtn'>
+                                                        {
+                                                            text
+                                                        }
+                                                    </button></td>
+                                                    <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
+                                                        {
+                                                            text2 ? text2 : 'Expired'
+                                                        }
+                                                    </button></td>
+                                                    <td>
+                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={(indexNo) => handleDelete(indexNo)}>
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    ) : (
+
+                                        incommingData && incommingData.map((item, id) => {
+
+                                            let indexNo = incommingData.length;
+
+                                            let backgroundColor;
+                                            let text;
+
+                                            let backgroundColor2;
+                                            let text2;
+
+                                            let status = item.startTime;
+                                            switch (status) {
+                                                case TIME1: {
+                                                    backgroundColor = '#27ae60';
+                                                    text = 'Scheduled';
+                                                    break;
+                                                }
+                                                case TIME2: {
+                                                    backgroundColor = '#f1c40f';
+                                                    text = 'Running';
+                                                    break;
+                                                }
+                                                case TIME3: {
+                                                    backgroundColor = '#e74c3c';
+                                                    text = 'Expired';
+                                                    break;
+                                                }
+
+                                            }
+
+                                            let status2 = item.endTime;
+                                            switch (status2) {
+                                                case TIME1: {
+                                                    backgroundColor2 = '#27ae60';
+                                                    text2 = 'Scheduled';
+                                                    break;
+                                                }
+                                                case TIME2: {
+                                                    backgroundColor2 = '#f1c40f';
+                                                    text2 = 'Running';
+                                                    break;
+                                                }
+                                                case TIME3: {
+                                                    backgroundColor2 = '#e74c3c';
+                                                    text2 = 'Expired';
+                                                    break;
+                                                }
+
+                                            }
+                                            return (
+                                                <tr key={id}>
+                                                    <th scope="row">
+                                                        {
+                                                            indexNo
+                                                        }
+                                                    </th>
+                                                    <td>
+                                                        {item.taskName}
+                                                    </td>
+                                                    <td> {item.description}</td>
+                                                    <td><button style={{ background: backgroundColor }} className='statusBtn'>
+                                                        {
+                                                            text
+                                                        }
+                                                    </button></td>
+                                                    <td><button style={{ background: backgroundColor2 ? backgroundColor2 : '#e74c3c' }} className='statusBtn'>
+                                                        {
+                                                            text2 ? text2 : 'Expired'
+                                                        }
+                                                    </button></td>
+                                                    <td>
+                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={(indexNo) => handleDelete(indexNo)}>
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+
+                                    )
                                 }
 
                             </tbody>
