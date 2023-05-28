@@ -21,10 +21,14 @@ const ViewTask = () => {
     const handleDelete = (id) => {
         console.log(id);
         const updataList = incommingData.filter(
-            (user, index) => index.length !== id
+            (item) => item.taskName !== id
         );
         setIncommingData(updataList)
     }
+    useEffect(() => {
+      
+    }, [handleDelete])
+    
 
     //logic for navigating to next r
     const navigate = useNavigate();
@@ -71,6 +75,7 @@ const ViewTask = () => {
                                         filteredResults && filteredResults.map((item, id) => {
 
                                             let indexNo = incommingData.length;
+                                            let name2 = item.taskName;
 
                                             let backgroundColor;
                                             let text;
@@ -139,7 +144,7 @@ const ViewTask = () => {
                                                         }
                                                     </button></td>
                                                     <td>
-                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={(indexNo) => handleDelete(indexNo)}>
+                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={() => handleDelete(name2)}>
                                                             Delete
                                                         </button>
                                                     </td>
@@ -152,6 +157,8 @@ const ViewTask = () => {
 
                                             let indexNo = incommingData.length;
 
+                                            let name = item.taskName;
+
                                             let backgroundColor;
                                             let text;
 
@@ -219,7 +226,7 @@ const ViewTask = () => {
                                                         }
                                                     </button></td>
                                                     <td>
-                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={(indexNo) => handleDelete(indexNo)}>
+                                                        <button style={{ background: '#000' }} className='statusBtn' onClick={() => handleDelete(name)}>
                                                             Delete
                                                         </button>
                                                     </td>
@@ -230,8 +237,11 @@ const ViewTask = () => {
                                     )
                                 }
 
+
+
                             </tbody>
                         </table>
+                       
                         <div className='viewJokesDiv'>
                             <button className='viewJokesBtn' onClick={hanldeViewJokes}>View All Jokes</button>
                         </div>
