@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 //library import
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({signIn}) => {
 
     //Managing State for User Login 
     const [email, setEmail] = useState("");
@@ -19,10 +19,12 @@ const Login = () => {
             password: password
         }];
         setNewEntry([...newEntry, newArray]);
+        signIn(true);
         localStorage.setItem('user', newArray);
         console.log(newArray);
         setEmail("");
         setPassword("");
+
         navigate("/editTask");
     };
     return (
