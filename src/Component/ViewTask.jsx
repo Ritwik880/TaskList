@@ -25,7 +25,7 @@ const ViewTask = () => {
         );
         setIncommingData(updataList)
     }
-    
+
     useEffect(() => {
     }, [handleDelete])
 
@@ -49,6 +49,20 @@ const ViewTask = () => {
             setFilteredResults(data)
         }
     }
+
+    //logic for sorting table data
+    const sortTable = () => {
+        let sortedProducts = [...data];
+        sortedProducts.sort((a, b) => {
+            if (a.taskName < b.taskName) {
+                return -1;
+            }
+            if (a.taskName > b.taskName) {
+                return 1;
+            }
+            return 0;
+        });
+    }
     return (
         <>
             <section className="landing-section">
@@ -56,6 +70,9 @@ const ViewTask = () => {
                     <div className="landing-form">
                         <div className="input">
                             <input type="text" placeholder="Search.." onChange={(e) => searchItems(e.target.value)} />
+                        </div>
+                        <div className="sortDiv mb-2">
+                            <button style={{ background: '#000' }} className='sortBtn' onClick={sortTable}>Sort</button>
                         </div>
                         <div className='table-responsive'>
                             <table className="table">

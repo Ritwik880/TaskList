@@ -80,7 +80,19 @@
   border-radius: 4px;
   padding: 0.4rem;
 }
-
+.sortDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sortBtn{
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.4rem;
+  width: 150px;
+  margin: auto;
+}
 .viewJokesBtn {
   border: none;
   padding: 0.4rem;
