@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="row container">
 
                 <div className="footer p-4">
-                    © 2021 Copyright: <a className="text-reset fw-bold" href="https://www.mobilefirst.in/">Mobilefirst.com</a>
+                    © 2023 Copyright: <a className="text-reset fw-bold" href="https://www.mobilefirst.in/">Mobilefirst.com</a>
                 </div>
 
             </div>
