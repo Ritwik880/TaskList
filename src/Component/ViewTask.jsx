@@ -25,12 +25,12 @@ const ViewTask = () => {
         );
         setIncommingData(updataList)
     }
+    
     useEffect(() => {
-
     }, [handleDelete])
 
 
-    //logic for navigating to next r
+    //logic for navigating to next route
     const navigate = useNavigate();
     const hanldeViewJokes = () => {
         navigate('/jokesSpot')

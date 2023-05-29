@@ -47,9 +47,11 @@
   padding: 0.6rem 0.4rem;
   margin-top: 0.4rem;
 }
-.start-time{
+
+.start-time {
   padding: 0.6rem 0.4rem;
 }
+
 .form-reset-btn {
   width: 100%;
   border: none;
@@ -61,50 +63,68 @@
   font-weight: 600;
 }
 
-.loader{
+.loader {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-.table{
+
+.table {
   border: 2px solid #000;
 }
-.statusBtn{
+
+.statusBtn {
   border: none;
   color: #fff;
   border-radius: 4px;
   padding: 0.4rem;
 }
-.viewJokesBtn{
+
+.viewJokesBtn {
   border: none;
   padding: 0.4rem;
   border-radius: 4px;
   background: #34495e;
   color: #FFFFFF;
 }
-.timeDiv{
+
+.timeDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+.footer-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+}
+.footer{
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+
 @media (max-width: 767px) {
   .landing-form {
-      width: 100%;
+    width: 100%;
   }
 
   .cancel-image-icon {
-      right: 14px;
-      bottom: 164%;
+    right: 14px;
+    bottom: 164%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .landing-form {
-      width: 100%;
+    width: 100%;
   }
 
   .cancel-image-icon {
-      bottom: 188%;
+    bottom: 188%;
   }
 }
